@@ -1,0 +1,31 @@
+{
+    "name": "rakuten-jobs",
+    "version": "0.1.0",
+    "private": true,
+    "description": "Find Rakuten engineering jobs I'm qualified for.",
+    "contributors": [
+        {
+            "name": "John Hayes",
+            "email": "john.hayes@turner.com"
+        }
+    ],
+    "scripts": {
+        "start": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/factorial/rakuten-jobs"
+    },
+    "engines": {
+        "node": "0.10.21"
+    },
+    "dependencies": {
+        "request": "2.33.0",
+        "cheerio": "0.13.1"
+    },
+    "devDependencies": {
+    },
+    "keywords": [
+    ]
+}
+
