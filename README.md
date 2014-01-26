@@ -8,7 +8,8 @@ job postings and attempts to discern my qualification to apply based on the
 language requirements in the job description.
 
 Not really coded for reuse, but it's simple to change if someone else out
-there wants to use it.
+there wants to use it. Coded in Nodejs just because I've been learning Node
+and asynchronous programming lately and wanted to continue.
 
 ## App output ##
 `stdio` - verbose reporting while process is running
