@@ -37,6 +37,7 @@ function requestJobsList(jobsUrl) {
             tmpUrl = url.resolve(jobsUrl, $(this).attr('href'));
             tmpJob = {
                 'jobCode': url.parse(tmpUrl, true).query['job_code'],
+                'foundDate': now,
                 'url': tmpUrl,
                 'title': $(this).text(),
                 'qualified': true, // assume i'm qualified unless I can prove otherwise via requestJob()
