@@ -109,10 +109,31 @@ function getJobQualificationFromText(text) {
 
 function saveData(jobsFound) {
     var html = '',
-        job,
-        jobCode;
+        json = '';
 
-    html = '<html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><table><tr><th>Job</th><th>Qualified</th><th>Applied</th></tr>';
+    html = generateJobsHtml(jobsFound);
+    json = JSON.stringify(jobsFound);
+
+    fs.writeFile(jobsHtmlFile, html, function doneWithHtmlWrite(err) {
+        if (err) {
+            throw err;
+        }
+        console.log('HTML saved to %s.', jobsHtmlFile);
+    });
+
+    fs.writeFile(jobsDataFile, json, function doneWithDataWrite(err) {
+        if (err) {
+            throw err;
+        }
+        console.log('Data saved to %s.', jobsDataFile);
+    });
+}
+
+function generateJobsHtml(jobsFound) {
+    var html = '<html><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><table><tr><th>Job</th><th>Qualified</th><th>Applied</th></tr>',
+        jobCode,
+        job;
+
     for (jobCode in jobsFound) {
         job = jobsFound[jobCode];
         if (job.qualified) {
@@ -124,20 +145,10 @@ function saveData(jobsFound) {
         }
     }
     html += '</table></html>';
-    fs.writeFile(jobsHtmlFile, html, function doneWithHtmlWrite(err) {
-        if (err) {
-            throw err;
-        }
-        console.log('HTML saved to %s.', jobsHtmlFile);
-    });
 
-    fs.writeFile(jobsDataFile, JSON.stringify(jobsFound), function doneWithDataWrite(err) {
-        if (err) {
-            throw err;
-        }
-        console.log('Data saved to %s.', jobsDataFile);
-    });
+    return html;
 }
+
 
 console.log('Rakuten Engineering Jobs - initialization complete. Requesting jobs list.');
 
